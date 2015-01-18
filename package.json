@@ -1,0 +1,19 @@
+{
+  "name": "audio_frequency_finder",
+  "version": "1.0.0",
+  "description": "Teesel Hack @ MHacks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SSJohns/audio_frequency_finder.git"
+  },
+  "author": "SSJohns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SSJohns/audio_frequency_finder/issues"
+  },
+  "homepage": "https://github.com/SSJohns/audio_frequency_finder"
+}

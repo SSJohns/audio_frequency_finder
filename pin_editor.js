@@ -12,19 +12,25 @@ var pinState = soundInputPin.read();
 
 setInterval(function () {
   pin.pwmDutyCycle(++count%50/50);  // 50 steps from zero to 1 
-  //console.log(count%50/50);
-  //console.log(pinState);
+  console.log('Step: ',count%50/50);
+  //console.log('Sound Log: ',pinState);
   pinState = soundInputPin.read();
   if( (count%50/50) < .5){ //there is no vibration at this point
   	baseNoise += pinState;
   	k = 1;	
-  } else if(k = 1){
+  } else if(k = 1 && (count%50/50<=.5) ){
+  	//console.log('\n \n \n');
+  	//console.log('Base Noise Before', baseNoise);
   	baseNoise = baseNoise/25;
+  	console.log('Base Noise After', baseNoise);
+  	console.log(count%50/50);
+  	k=0;
   }
-  if( (count%50/50) >= .5){
+  if( (count%50/50) >= .4){
   	i++;
 	resonantCheck[i] = pinState - baseNoise;
-	console.log(resonantCheck[i]);
+	console.log('Basis: ',baseNoise);
+	console.log('Resonance Scan: ',resonantCheck[i]);
   }
 }, 500);
 //while(1){
