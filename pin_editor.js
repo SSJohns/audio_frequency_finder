@@ -16,7 +16,7 @@ setInterval(function () {
   //console.log('Sound Log: ',pinState);
   pinState = soundInputPin.read();
   if( (count%50/50) < .5){ //there is no vibration at this point
-  	baseNoise += pinState;
+  	baseNoise += soundInputPin.read();
   	k = 1;	
   } else if(k = 1 && (count%50/50<=.5) ){
   	//console.log('\n \n \n');
@@ -28,9 +28,15 @@ setInterval(function () {
   }
   if( (count%50/50) >= .4){
   	i++;
-	resonantCheck[i] = pinState - baseNoise;
+	resonantCheck[i] = soundInputPin.read() - baseNoise;
 	console.log('Basis: ',baseNoise);
 	console.log('Resonance Scan: ',resonantCheck[i]);
+  }
+  if((count%50/50)==.98){
+    baseNoise = 0;
+    for(i=0; i<26; i++){
+      resonantCheck[i] = null;
+    }
   }
 }, 500);
 //while(1){
